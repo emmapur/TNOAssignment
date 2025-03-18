@@ -2,11 +2,15 @@ import java.io.*;
 import java.util.*;
 
 public class Simulator {
-    private static final int SIMULATION_TIME = 20;
-    // Update this path to the location of your radar data file
-    private static final String FILE_NAME = ".\\data\\radar_data.csv";
+    
+   private static final int SIMULATION_TIME = 20;
+    
+   private static final String FILE_NAME = getProjectRoot().resolve("data/radar_data.csv").toString();
 
-
+    private static Path getProjectRoot() {
+        return Paths.get(System.getProperty("user.dir"));
+    }
+    
     // Reads the radar CSV file and returns a list of String arrays (one array per time step)
     public static List<String[]> readRadarData(String fileName) {
         List<String[]> data = new ArrayList<>();
